@@ -18,7 +18,7 @@ class VkOauthController < ApplicationController
     @parsed_json_token_data = ActiveSupport::JSON.decode(json_token)
 
     if(!@parsed_json_token_data["error"].present?)
-      @json_friends = open("https://api.vkontakte.ru/method/friends.get?uid="++@parsed_json_token_data["user_id"].to_s+"&access_token="+@parsed_json_token_data["access_token"].to_s)
+      @json_friends = open("https://api.vkontakte.ru/method/friends.get?uid="+@parsed_json_token_data["user_id"].to_s+"&access_token="+@parsed_json_token_data["access_token"].to_s)
     end
 
   end
