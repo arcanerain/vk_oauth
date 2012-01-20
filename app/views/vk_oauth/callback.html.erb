@@ -1,5 +1,4 @@
 <p><%= link_to "к индексу", "index" %></p>
-<p><%= link_to "запостить на стену тестовое сообщение", "post" %></p>
 Took the code: <%= @code %><br />
 Taking a token...<br />
 
@@ -9,6 +8,7 @@ Taking a token...<br />
   Gotcha! <%= @parsed_json_token_data["access_token"] %><br />
   Expires in: <%= @parsed_json_token_data["expires_in"] %><br />
   User id: <%= @parsed_json_token_data["user_id"] %><br />
+  <p><%= link_to "запостить на стену тестовое сообщение", "post?access_token="+@parsed_json_token_data["access_token"] %></p>
 <% end %>
 
 <p>Friends info:</p>
