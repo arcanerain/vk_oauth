@@ -1,3 +1,6 @@
-Took the code: <%= @code %>
-Taking a token...
-<%= debug(@parsed_json_token_data) %>
+Took the code: <%= @code %><br />
+Taking a token...<br />
+Gotcha! <%= @parsed_json_token_data[:access_token] %><br />
+Expires in: <%= @parsed_json_token_data[:expires_in] %><br />
+User id: <%= @parsed_json_token_data[:user_id] %><br />
+
