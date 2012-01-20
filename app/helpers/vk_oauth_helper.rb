@@ -1,0 +1,2 @@
+module VkOauthHelper
+end
