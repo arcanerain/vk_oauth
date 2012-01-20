@@ -25,6 +25,12 @@ class VkOauthController < ApplicationController
 
   end
 
+  def post
+    message = "Test of the wall.post function through OAuth 2 access token"
+    json_wall_post = open("https://api.vkontakte.ru/method/wall.post?message="+message+"&access_token="+@parsed_json_token_data["access_token"].to_s)
+    @parsed_result = ActiveSupport::JSON.decode(json_wall_post)
+  end
+
   def logout
   end
 
