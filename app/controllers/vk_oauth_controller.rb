@@ -16,11 +16,14 @@ class VkOauthController < ApplicationController
     #with a code trying to get an access_token
     json_token = open("https://oauth.vkontakte.ru/access_token?client_id="+CLIENT_ID.to_s+"&client_secret="+CLIENT_SECRET+"&code="+@code)
     @parsed_json_token_data = ActiveSupport::JSON.decode(json_token)
+
+    if(!@parsed_json_token_data["error"].present?)
+      @json_friends = open("https://api.vkontakte.ru/method/friends.get?uid="++@parsed_json_token_data["user_id"].to_s+"&access_token="+@parsed_json_token_data["access_token"].to_s)
+    end
+
   end
 
   def logout
-    @a = Hash.new
-    @a["e"] = "123"
   end
 
 end
