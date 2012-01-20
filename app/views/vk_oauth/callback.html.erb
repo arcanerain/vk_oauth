@@ -13,3 +13,14 @@ Taking a token...<br />
 <p>Friends info:</p>
 <!--<%= debug(@parsed_json_friends) %><br /-->
 <pre><%= @parsed_json_friends.inspect %></pre>
+Test of the first user info retrieve:
+<%= @parsed_json_friends["response"][0]["uid"] %><br />
+<%= @parsed_json_friends["response"][0]["first_name"] %><br />
+<%= @parsed_json_friends["response"][0]["last_name"] %><br />
+...
+
+<!--p>All info retrieve:</p>
+  <% @parsed_json_friends["response"].each do |friend| %>
+    <%= friend["uid"] %>
+  <% end %>
+<br /-->
