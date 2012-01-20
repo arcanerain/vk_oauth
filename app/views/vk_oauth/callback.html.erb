@@ -1,11 +1,11 @@
 Took the code: <%= @code %><br />
 Taking a token...<br />
 
-<% if(@parsed_json_token_data["error"] == "") %>
+<% if(@parsed_json_token_data["error"].present?) %>
+  <%= debug(@parsed_json_token_data) %>
+<% else %>
   Gotcha! <%= @parsed_json_token_data["access_token"] %><br />
   Expires in: <%= @parsed_json_token_data["expires_in"] %><br />
   User id: <%= @parsed_json_token_data["user_id"] %><br />
-<% else %>
-  debug(@parsed_json_token_data)
 <% end %>
 

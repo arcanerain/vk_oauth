@@ -19,6 +19,8 @@ class VkOauthController < ApplicationController
   end
 
   def logout
+    @a = Hash.new
+    @a["e"] = "123"
   end
 
 end
