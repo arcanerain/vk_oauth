@@ -14,7 +14,7 @@ class VkOauthController < ApplicationController
   def callback
     @code = params[:code]
     #with a code trying to get an access_token
-    json_token = open("https://oauth.vkontakte.ru/access_token?client_id="+CLIENT_ID.to_s+"&client_secret="+CLIENT_SECRET+"&code="+code)
+    json_token = open("https://oauth.vkontakte.ru/access_token?client_id="+CLIENT_ID.to_s+"&client_secret="+CLIENT_SECRET+"&code="+@code)
     @parsed_json_token_data = ActiveSupport::JSON.decode(json_token)
   end
 
