@@ -6,9 +6,11 @@ class VkOauthController < ApplicationController
   end
 
   def callback
+    @code = params[:code]
   end
 
   def logout
+
   end
 
 end
