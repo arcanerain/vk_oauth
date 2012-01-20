@@ -35,6 +35,16 @@ class VkOauthController < ApplicationController
     end
   end
 
+  def postsave
+    message = URI::encode("Test of the wall.savePost function through OAuth 2 access token")
+    if(!params[:access_token].nil? && !params[:wall_id].nil?)
+      json_wall_post = open("https://api.vkontakte.ru/method/wall.savePost?wall_id="+params[:wall_id].to_s+"&message="+message+"&access_token="+params[:access_token].to_s)
+      @result = ActiveSupport::JSON.decode(json_wall_post)
+    else
+      @result = "Access token is nil"
+    end
+  end
+
   def logout
   end
 

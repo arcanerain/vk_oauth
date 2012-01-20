@@ -3,6 +3,7 @@ VkOauth::Application.routes.draw do
   get "vk_oauth/callback"
   get "vk_oauth/logout"
   get "vk_oauth/post"
+  get "vk_oauth/postsave"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
