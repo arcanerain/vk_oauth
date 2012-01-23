@@ -48,7 +48,7 @@ class VkOauthController < ApplicationController
   def notification
     message = URI::encode("Test of the secure.sendNotification function through OAuth 2 access token")
     if(!params[:access_token].nil? && !params[:uid].nil?)
-      json_send_notif = open("https://api.vkontakte.ru/method/secure.sendNotification?uids="+params[:uid].to_s+"&message="+message+"&random="+rand(9999)+"timestamp="+Time.now.to_i)
+      json_send_notif = open("https://api.vkontakte.ru/method/secure.sendNotification?uids="+params[:uid].to_s+"&message="+message+"&random="+rand(9999).to_s+"timestamp="+Time.now.to_i.to_s)
       @result = ActiveSupport::JSON.decode(json_send_notif)
     else
       @result = "Access token is nil"
