@@ -2,11 +2,11 @@ require 'open-uri'
 class VkOauthController < ApplicationController
   CLIENT_ID = 2764053
   CLIENT_SECRET = "hWXCwCTpBHIGXYg07P7D"
-  URL = "http://strong-sword-9740.heroku.com/vk_oauth/callback"
+  CALLBACK_URL = "http://strong-sword-9740.heroku.com/vk_oauth/callback"
 
   def index
-    @client_id = CLIENT_ID
-    @redirect_uri = URL
+    @client_id = CLIENT_ID.to_s
+    @redirect_uri = CALLBACK_URL
     @display = "page" # popup
     @scope = "friends,wall,offline"
   end
