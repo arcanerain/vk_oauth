@@ -1,4 +1,3 @@
-# encoding: utf-8
 require 'open-uri'
 class VkOauthController < ApplicationController
   CLIENT_ID = 2764053
@@ -50,7 +49,7 @@ class VkOauthController < ApplicationController
     if(!params[:access_token].nil? && !params[:uid].nil?)
       #json_send_notif = open("https://api.vkontakte.ru/method/secure.sendNotification?uids="+params[:uid].to_s+"&message="+message+"&random="+rand(9999).to_s+"timestamp="+Time.now.to_i.to_s+"&access_token="+params[:access_token].to_s+"&client_secret="+CLIENT_SECRET)
       xml_send_notif = open("https://api.vkontakte.ru/api.php?api_id="+CLIENT_ID.to_s+"&method=secure.sendNotification&uids="+params[:uid].to_s+"&message="+message+"&random="+rand(9999).to_s+"timestamp="+Time.now.to_i.to_s+"&access_token="+params[:access_token].to_s)
-      @result = XML::Parser.string(xml_send_notif).parse
+      @result = Nokogiri::XML::Reader(xml_send_notif)
     else
       @result = "Access token is nil"
     end
