@@ -1,2 +1,4 @@
 <p><%= link_to "к индексу", "index" %></p>
-<%= debug(@result) %>
+<% @result.each do |node| %>
+ <%= node.name %>
+<% end %>
