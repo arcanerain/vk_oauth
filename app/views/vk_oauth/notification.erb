@@ -1,5 +1,2 @@
 <p><%= link_to "к индексу", "index" %></p>
-<% @result.each do |node| %>
- <%= p node.name unless node.name.nil? %><br />
- <%= p node.value unless node.value.nil? %><br />
-<% end %>
+<% debug(@result) %>
