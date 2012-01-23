@@ -50,7 +50,7 @@ class VkOauthController < ApplicationController
     if(!params[:access_token].nil? && !params[:uid].nil?)
       #json_send_notif = open("https://api.vkontakte.ru/method/secure.sendNotification?uids="+params[:uid].to_s+"&message="+message+"&random="+rand(9999).to_s+"timestamp="+Time.now.to_i.to_s+"&access_token="+params[:access_token].to_s+"&client_secret="+CLIENT_SECRET)
       xml_send_notif = open("https://api.vkontakte.ru/api.php?api_id="+CLIENT_ID.to_s+"&method=secure.sendNotification&uids="+params[:uid].to_s+"&message="+message+"&random="+rand(9999).to_s+"timestamp="+Time.now.to_i.to_s+"&access_token="+params[:access_token].to_s)
-      @result = xml_send_notif
+      @result = XML::Parser.string(xml_send_notif).parse
     else
       @result = "Access token is nil"
     end
